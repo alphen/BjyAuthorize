@@ -42,10 +42,15 @@ class Module implements
         $guards         = $serviceManager->get('BjyAuthorize\Guards');
 
         foreach ($guards as $guard) {
-            $app->getEventManager()->attach($guard);
+            
+            $app->getEventManager()->attach((string)rand(1,50), function() use ($guard){
+                return $guard;
+            });
         }
 
-        $app->getEventManager()->attach($strategy);
+        $app->getEventManager()->attach('strategy', function () use ($strategy){
+            return $strategy;
+        });
     }
 
     /**

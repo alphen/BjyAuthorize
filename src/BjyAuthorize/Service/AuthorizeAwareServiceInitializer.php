@@ -10,7 +10,7 @@
 
 namespace BjyAuthorize\Service;
 
-use Zend\ServiceManager\InitializerInterface;
+use Zend\ServiceManager\Initializer\InitializerInterface;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -22,9 +22,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class AuthorizeAwareServiceInitializer implements InitializerInterface
 {
-    
    
-    
     /**
      * {@inheritDoc}
      */
