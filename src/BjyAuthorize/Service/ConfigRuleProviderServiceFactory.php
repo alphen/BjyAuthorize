@@ -11,6 +11,8 @@ namespace BjyAuthorize\Service;
 use BjyAuthorize\Provider\Rule\Config;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
+
 
 /**
  * Factory responsible of instantiating {@see \BjyAuthorize\Provider\Rule\Config}
@@ -19,15 +21,14 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class ConfigRuleProviderServiceFactory implements FactoryInterface
 {
-    /**
-     * {@inheritDoc}
-     *
-     * @return \BjyAuthorize\Provider\Rule\Config
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
-        $config = $serviceLocator->get('BjyAuthorize\Config');
-
+    
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
+    ){
+        $config = $container->get('BjyAuthorize\Config');
+        
         return new Config($config['rule_providers']['BjyAuthorize\Provider\Rule\Config']);
     }
 }

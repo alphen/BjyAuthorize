@@ -20,6 +20,8 @@ use BjyAuthorize\Acl\Role;
 use BjyAuthorize\Guard\GuardInterface;
 use Zend\Permissions\Acl\Resource\ResourceInterface;
 use Zend\Cache\Storage\StorageInterface;
+use Interop\Container\ContainerInterface;
+
 
 /**
  * Authorize service
@@ -81,7 +83,7 @@ class Authorize
      * @param array                                         $config
      * @param \Zend\ServiceManager\ServiceLocatorInterface  $serviceLocator
      */
-    public function __construct(array $config, ServiceLocatorInterface $serviceLocator)
+    public function __construct(array $config, ContainerInterface $serviceLocator)
     {
         $this->config         = $config;
         $this->serviceLocator = $serviceLocator;

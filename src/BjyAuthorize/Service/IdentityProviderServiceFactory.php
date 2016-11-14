@@ -10,6 +10,7 @@ namespace BjyAuthorize\Service;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 /**
  * Factory responsible of building {@see \BjyAuthorize\Provider\Identity\ProviderInterface}
@@ -18,15 +19,14 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class IdentityProviderServiceFactory implements FactoryInterface
 {
-    /**
-     * {@inheritDoc}
-     *
-     * @return \BjyAuthorize\Provider\Identity\ProviderInterface
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
-        $config = $serviceLocator->get('BjyAuthorize\Config');
-
-        return $serviceLocator->get($config['identity_provider']);
+       
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
+    ){
+        $config = $container->get('BjyAuthorize\Config');
+        
+        return $container->get($config['identity_provider']);
     }
 }

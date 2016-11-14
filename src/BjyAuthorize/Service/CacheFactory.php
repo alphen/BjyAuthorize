@@ -12,6 +12,8 @@ use Zend\Cache\Storage\StorageInterface;
 use Zend\Cache\StorageFactory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
+
 
 /**
  * Factory for building the cache storage
@@ -20,16 +22,15 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class CacheFactory implements FactoryInterface
 {
-    /**
-     * Create a cache
-     *
-     * @param   ServiceLocatorInterface $serviceLocator
-     * @return  StorageInterface
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
-        $options = $serviceLocator->get('BjyAuthorize\Config');
-
+   
+    
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
+    ){
+        $options = $container->get('BjyAuthorize\Config');
+        
         return StorageFactory::factory($options['cache_options']);
     }
 }

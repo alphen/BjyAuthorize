@@ -11,6 +11,7 @@ namespace BjyAuthorize\Service;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Db\TableGateway\TableGateway;
+use Interop\Container\ContainerInterface;
 
 /**
  * @author Simone Castellaneta <s.castel@gmail.com>
@@ -24,8 +25,11 @@ class UserRoleServiceFactory implements FactoryInterface
      * 
      * @return \Zend\Db\TableGateway\TableGateway
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
-        return new TableGateway('user_role', $serviceLocator->get('bjyauthorize_zend_db_adapter'));
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
+    ){
+        return new TableGateway('user_role', $container->get('bjyauthorize_zend_db_adapter'));
     }
 }

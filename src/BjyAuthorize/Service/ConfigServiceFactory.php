@@ -8,8 +8,8 @@
 
 namespace BjyAuthorize\Service;
 
-use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 /**
  * Factory responsible of retrieving an array containing the BjyAuthorize configuration
@@ -18,15 +18,14 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class ConfigServiceFactory implements FactoryInterface
 {
-    /**
-     * {@inheritDoc}
-     *
-     * @return array
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
-        $config = $serviceLocator->get('Config');
-
+    
+    public function __invoke(
+        ContainerInterface $container,
+        $requestedName, 
+        array $options = null
+    ){
+        $config = $container->get('Config');
         return $config['bjyauthorize'];
     }
+    
 }
