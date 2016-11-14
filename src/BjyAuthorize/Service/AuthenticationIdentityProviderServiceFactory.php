@@ -11,7 +11,7 @@ namespace BjyAuthorize\Service;
 
 use BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider;
 use Interop\Container\ContainerInterface;
-
+use Zend\ServiceManager\Factory\FactoryInterface;
 /**
  * Simple authentication provider factory
  *

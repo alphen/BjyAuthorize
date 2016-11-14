@@ -9,8 +9,7 @@
 namespace BjyAuthorize\Service;
 
 use BjyAuthorize\Provider\Role\ZendDb;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 
 /**

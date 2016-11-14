@@ -10,7 +10,7 @@ namespace BjyAuthorize\Service;
 
 use Zend\Cache\Storage\StorageInterface;
 use Zend\Cache\StorageFactory;
-use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Interop\Container\ContainerInterface;
 

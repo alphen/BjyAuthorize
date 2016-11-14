@@ -10,6 +10,7 @@ namespace BjyAuthorize\Service;
 
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Factory responsible of retrieving an array containing the BjyAuthorize configuration
