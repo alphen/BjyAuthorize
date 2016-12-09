@@ -40,17 +40,17 @@ class Module implements
         $config         = $serviceManager->get('BjyAuthorize\Config');
         $strategy       = $serviceManager->get($config['unauthorized_strategy']);
         $guards         = $serviceManager->get('BjyAuthorize\Guards');
-
+        
         foreach ($guards as $guard) {
-            
-            $app->getEventManager()->attach((string)rand(1,50), function() use ($guard){
-                return $guard;
-            });
+            $guard->attach($app->getEventManager());
+            /* $app->getEventManager()->attach((string)rand(1,50), function() use ($guard){
+             return $guard;
+             }); */
         }
-
-        $app->getEventManager()->attach('strategy', function () use ($strategy){
-            return $strategy;
-        });
+        $strategy->attach($app->getEventManager());
+        /* $app->getEventManager()->attach('strategy', function () use ($strategy){
+         return $strategy;
+         }); */
     }
 
     /**
