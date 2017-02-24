@@ -65,6 +65,8 @@ class Route extends AbstractGuard
 
         /* @var $app \Zend\Mvc\Application */
         $app = $event->getTarget();
+        
+        $app->getEventManager()->setEventPrototype($event);
 
         $app->getEventManager()->trigger(MvcEvent::EVENT_DISPATCH_ERROR, $event);
     }
